@@ -26,16 +26,42 @@
 
         function createGame() {
             const state = {
-                players: {
-                    'player1': { x: 1, y: 1 },
-                    'player2': { x: 2, y: 9 }
-                },
+                players: {},
 
-                fruits: {
-                    'fruits1': { x: 3, y: 1 }
+                fruits: {}
+            }
+
+            function addPlayer(command){
+                const playerId = command.playerId
+                const playerX = command.playerX
+                const playerY = command.playerY
+
+                state.players[playerId] = {
+                    x: playerX,
+                    y: playerY
                 }
             }
 
+            function removePlayer(command){
+                const playerId = command.playerId
+                delete state.players[playerId]
+            }
+
+            function addFruits(command){
+                const fruitId = command.fruitId
+                const fruitX = command.fruitX
+                const fruitY= command.fruitY
+
+                state.fruits[fruitId] = {
+                    x: fruitX,
+                    y: fruitY
+                }
+            }
+
+            function removeFruit(command){
+                const fruitId= command.fruitId
+                delete state.fruits[fruitId]
+            }
 
             function movePlayer(command) {
 
@@ -61,8 +87,8 @@
                         }
                     },
 
-                    ArrowLeft(player){
-                        cosole.log('Moving player Left')
+                    ArrowLeft(player) {
+                        console.log('Moving player Left')
                         if (player.x - 1 >= 0) {
                               player.x = player.x - 1
                         }
@@ -73,14 +99,19 @@
                 const player = state.players[command.playerId]
                 const moveFunction = acceptedMoves[keyPressed]
                 
-                if(moveFunction){
+                if(player && moveFunction){
                     moveFunction(player)
                 }
             }
-
+            
 
             return {
-                movePlayer, state
+                addPlayer,
+                removePlayer,
+                movePlayer,
+                addFruits,
+                removeFruit,
+                state
             }
 
         }
@@ -99,7 +130,7 @@
 
             }
             function notifyAll(command) {
-                console.log('Notifying ${state.observers.length} observers')
+                console.log('keyboardListener -> Notifying ${state.observers.length} observers')
                 
                 for(const observeFunction of state.observers){
                     observeFunction(command)
