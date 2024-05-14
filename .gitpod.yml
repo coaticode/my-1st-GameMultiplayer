@@ -2,5 +2,5 @@ ports:
   - port: 3000
     onOpen: open-preview
 tasks:
-  - before: cd playground/1st-proof-of-concept
+  - before: cd playground/firstRelease
     command: nvm install 20.12.0 && npm install && npm start
