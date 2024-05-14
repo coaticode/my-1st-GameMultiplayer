@@ -3,7 +3,7 @@ export default function createKeyboardListener(document) {
     const state = {
         observers: []
     }
-
+ 
     function subscribe(observeFunction){
         state.observers.push(observeFunction)
 

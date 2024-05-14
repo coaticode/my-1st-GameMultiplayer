@@ -22,7 +22,7 @@
         import createGame from './game.js'
         import createKeyboardListener from './keyboard-listener.js'
         import renderScreen from './render-screen.js'
-
+ 
         const game = createGame()
         const keyboardListener = createKeyboardListener(document)
         keyboardListener.subscribe(game.movePlayer)
@@ -32,8 +32,6 @@
 
         game.addPlayer({playerId: 'player1', playerX: 0, playerY: 1})
         game.addFruits({fruitId: 'fruit1', fruitX: 5, fruitY: 6})
-
-        renderScreen()
     </script>
 </body>
 
