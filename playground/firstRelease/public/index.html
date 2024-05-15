@@ -37,6 +37,11 @@
             const playerId = socket.id
             console.log('Player connected on Client with id: ${playerId}')
         })
+
+        socket.on('setup', (state) => {
+            console.log('> Receiving "setup" evet from server')
+            console.log(state)
+        })
         
     </script>
 </body>
