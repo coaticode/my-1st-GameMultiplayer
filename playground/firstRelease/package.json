@@ -20,7 +20,7 @@
   "homepage": "https://github.com/coaticode/my-1st-GameMultiplayer#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "socket.io": "^4.7.5"
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {}
 }
