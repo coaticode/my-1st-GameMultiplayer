@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/coaticode/my-1st-GameMultiplayer#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
   }
 }
