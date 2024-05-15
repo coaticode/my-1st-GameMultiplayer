@@ -31,7 +31,7 @@
         const screen = document.getElementById('screen')
         renderScreen(screen, game, requestAnimationFrame)
 
-        const socket =io()
+        const socket = io()
 
         socket.on('connect', () => {
             const playerId = socket.id
