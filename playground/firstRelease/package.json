@@ -2,7 +2,8 @@
   "name": "firstrelease",
   "version": "1.0.0",
   "description": "Um jogo multiplayer bastante simples para testarmos o Socket.io",
-  "main": "index.js",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,10 +11,13 @@
     "type": "git",
     "url": "git+https://github.com/coaticode/my-1st-GameMultiplayer.git"
   },
-  "author": "",
+  "author": "sidnei santos",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/coaticode/my-1st-GameMultiplayer/issues"
   },
-  "homepage": "https://github.com/coaticode/my-1st-GameMultiplayer#readme"
+  "homepage": "https://github.com/coaticode/my-1st-GameMultiplayer#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
