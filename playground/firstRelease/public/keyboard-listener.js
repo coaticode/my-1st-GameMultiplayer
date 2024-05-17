@@ -15,7 +15,6 @@ export default function createKeyboardListener(document) {
             observeFunction(command)
         }
     }
-
     document.addEventListener('keydown', handKeydown)
 
     function handKeydown(event) {
