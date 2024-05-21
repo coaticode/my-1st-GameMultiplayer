@@ -11,14 +11,12 @@ app.use(express.static('public'))
 
 const game = createGame()
 
+game.start()
+
 game.subscribe((command) => {
     console.log('> Emitting ${command.type}')
     sockets.emit(command.type, command)
 })
-
-game.addPlayer({playerId: 'player1', playerX: 0, playerY: 1})
-game.addFruits({fruitId: 'fruit1', fruitX: 5, fruitY: 6})
-
 
 sockets.on('connection', (socket) => {
     const playerId = socket.id
@@ -26,9 +24,17 @@ sockets.on('connection', (socket) => {
     game.addPlayer({playerId: playerId})
 
     socket.emit('setup', game.state)
+    
     socket.on('disconnect', () => {
         game.removePlayer({playerId: playerId})
         console.log('> Player Disconnected: ${playerId}')
+    })
+
+    socket.on('move-player', (command) => {
+        command.playerId = playerId
+        command.type = 'move-player'
+
+        game.movePlayer(command)
     })
 })
 
